@@ -36,9 +36,12 @@ client.on('ready', message =>{
 });
 
 client.on('message', message =>{
+//  if (message.author.id == client.user.id || message.author.bot){
+//    return;
+//  }
   if (message.author.id == client.user.id || message.author.bot){
-    return;
-  }
+//    return;
+//  }
   if(message.isMemberMentioned(client.user)){
     sendReply(message, "呼びましたか？");
     return;
