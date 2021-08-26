@@ -40,12 +40,12 @@ client.on('message', message =>{
 //    return;
 //  }
   if (message.author.bot){
-    message.react('❍');
+    message.react('⭕');
     message.react('✖');
     message.react('❓');
     message.react('🎤');
     message.react('👂');
-    message.react('泣');
+    message.react('😭');
     return;
   }
   if(message.isMemberMentioned(client.user)){
