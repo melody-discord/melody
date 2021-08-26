@@ -39,9 +39,15 @@ client.on('message', message =>{
 //  if (message.author.id == client.user.id || message.author.bot){
 //    return;
 //  }
-  if (message.author.id == client.user.id || message.author.bot){
-//    return;
-//  }
+  if (message.author.bot){
+    message.react(':o:');
+    message.react(':x:');
+    message.react(':question:');
+    message.react(':microphone:');
+    message.react(':ear:');
+    message.react(':sob:');
+    return;
+  }
   if(message.isMemberMentioned(client.user)){
     sendReply(message, "呼びましたか？");
     return;
