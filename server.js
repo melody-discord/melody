@@ -41,7 +41,7 @@ client.on('message', message =>{
 //  }
   if (message.author.bot){
     message.react('⭕');
-    message.react('✖');
+    message.react('❌');
     message.react('❓');
     message.react('🎤');
     message.react('👂');
