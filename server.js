@@ -36,12 +36,12 @@ client.on('ready', message =>{
 });
 
 client.on('message', message =>{
-//  if (message.author.id == client.user.id || message.author.bot){
-//    return;
-//  }
-//  if (message.author.bot && message.author.id == '875191973559038033'){
-  console.log(message.author.id + ":" + message.author.username);
-  if (message.author.bot && message.author.username == 'melody bot'){
+  if (message.author.id == client.user.id){
+    return;
+  }
+  // author.idはwebhookの最初の数字
+  if (message.author.bot && message.author.id == '875191973559038033'){
+    console.log(message.author.id + ":" + message.author.username);
     message.react('⭕');
     message.react('❌');
     message.react('❓');
@@ -51,11 +51,16 @@ client.on('message', message =>{
     return;
   }
   if(message.isMemberMentioned(client.user)){
-    sendReply(message, "呼びましたか？");
+    sendReply(message, "ん？呼んだ？");
     return;
   }
   if (message.content.match(/にゃ～ん|にゃーん/)){
     let text = "にゃ～ん";
+    sendMsg(message.channel.id, text);
+    return;
+  }
+  if (message.content.match('やぁ')){
+    let text = "L「使用許可取った？」";
     sendMsg(message.channel.id, text);
     return;
   }
