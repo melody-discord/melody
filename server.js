@@ -39,7 +39,9 @@ client.on('message', message =>{
 //  if (message.author.id == client.user.id || message.author.bot){
 //    return;
 //  }
-  if (message.author.bot){ } && message.author.username == 'melody bot'){
+//  if (message.author.bot && message.author.id == '875191973559038033'){
+  if (message.author.bot && message.author.username == '875191973559038033'){
+    console.log(message.author.id)
     message.react('⭕');
     message.react('❌');
     message.react('❓');
