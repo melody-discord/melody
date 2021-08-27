@@ -32,14 +32,14 @@ http.createServer(function(req, res){
 
 client.on('ready', message =>{
   console.log('Bot準備完了～');
-  client.user.setPresence({ activity: { name: 'げーむ' } });
+  client.user.setPresence({ activity: { name: '監視中' },status: 'online' });
 });
 
 client.on('message', message =>{
   if (message.author.id == client.user.id){
     return;
   }
-  // author.idはwebhookの最初の数字
+  // author.idはwebhookの最初の数字18桁
   if (message.author.bot && message.author.id == '875191973559038033'){
     console.log(message.author.id + ":" + message.author.username);
     message.react('⭕');
