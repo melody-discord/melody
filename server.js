@@ -40,8 +40,8 @@ client.on('message', message =>{
 //    return;
 //  }
 //  if (message.author.bot && message.author.id == '875191973559038033'){
-  if (message.author.bot && message.author.username == '875191973559038033'){
-    console.log(message.author.id)
+  console.log(message.author.id + ":" + message.author.username);
+  if (message.author.bot && message.author.username == 'melody bot'){
     message.react('⭕');
     message.react('❌');
     message.react('❓');
