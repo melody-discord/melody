@@ -40,8 +40,8 @@ client.on('message', message =>{
     return;
   }
   // author.idはwebhookの最初の数字18桁
-  if (message.author.id == process.env.DISCORD_BOT_ID01 ||
-      message.author.id == process.env.DISCORD_BOT_ID02){
+  if ((message.author.id == process.env.DISCORD_BOT_ID01) ||
+      (message.author.id == process.env.DISCORD_BOT_ID02)){
     console.log(message.author.id + ":" + message.author.username);
     message.react('⭕');
     message.react('❌');
