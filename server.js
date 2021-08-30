@@ -40,7 +40,7 @@ client.on('message', message =>{
     return;
   }
   // author.idはwebhookの最初の数字18桁
-  if (message.author.bot && message.author.id == process.env.DISCORD_BOT_ID01){
+  if (message.author.id == process.env.DISCORD_BOT_ID01){
     console.log(message.author.id + ":" + message.author.username);
     message.react('⭕');
     message.react('❌');
