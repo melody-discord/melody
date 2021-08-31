@@ -56,7 +56,6 @@ client.on("message", message => {
     let arr = ["ん？呼んだ？", "はーい♡", "...", "起きてるよ", "うるせぇな"];
     var random = Math.floor(Math.random() * arr.length);
     var result = arr[random];
-
     sendReply(message, result);
     return;
   }
