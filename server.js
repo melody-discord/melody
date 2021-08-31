@@ -53,7 +53,11 @@ client.on("message", message => {
     return;
   }
   if (message.isMemberMentioned(client.user)) {
-    sendReply(message, "ん？呼んだ？");
+    let arr = ["ん？呼んだ？", "はーい♡", "...", "起きてるよ", "うるせぇな"];
+    var random = Math.floor(Math.random() * arr.length);
+    var result = arr[random];
+
+    sendReply(message, result);
     return;
   }
   //  if (message.content.match(/にゃ～ん|にゃーん/)){
