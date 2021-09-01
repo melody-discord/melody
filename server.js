@@ -116,3 +116,10 @@ function sendMsg(channelId, text, option = {}) {
     .then(console.log("メッセージ送信: " + text + JSON.stringify(option)))
     .catch(console.error);
 }
+function sendMsgAndLog(channelId, text, option = {}) {
+  let sent = await client.channels 
+    .get(channelId)
+    .send(text, option)
+    .then(console.log("メッセージ送信: " + text + JSON.stringify(option)))
+    .catch(console.error);
+}
