@@ -63,12 +63,15 @@ client.on("message", message => {
     return;
   }
   if (message.content == '!cp help' || '!cp'){
-    let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
+    let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n"
+             + "【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
     sendMsg(message.channel.id, text);
     return;
   }
   if (message.content == '!cp reset'){
-    let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
+    let text = "戦闘力の報告をお願いします！\n" 
+             + "【入力方法】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ" 
+             + "\n－－－－－－－－－－－－－－－－－\n";
     sendMsg(message.channel.id, text);
     return;
   }
