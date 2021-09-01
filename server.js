@@ -65,6 +65,9 @@ client.on("message", message => {
     return;
   }
 
+  //DEBUG MODE
+  if (message.channel.id == rocess.env.DISCORD_BOT_TEST_CH) return;
+  
   if (message.content.startsWith(prefix)){
     const args = message.content.slice(prefix.length).trim().split(' ');
     const cmd = args.shift().toLowerCase();
@@ -137,14 +140,14 @@ function sendMsg(channelId, text, option = {}) {
   client.channels
     .get(channelId)
     .send(text, option)
-    .then(console.log("メッセージ送信: " + text + JSON.stringify(option)))
+    .then(console.log("CH:" + channelId + " メッセージ送信: " + text + JSON.stringify(option)))
     .catch(console.error);
 }
 async function sendMsgAndLog(channelId, text, option = {}) {
   let sent = await client.channels
     .get(channelId)
     .send(text, option)
-    .then(console.log("メッセージ送信: " + text + JSON.stringify(option)))
+    .then(console.log("CH:" + channelId + " メッセージ送信: " + text + JSON.stringify(option)))
     .catch(console.error);
   let id = sent.id;
   writeCPConfig(channelId, id);
