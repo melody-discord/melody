@@ -56,7 +56,8 @@ client.on("message", message => {
     console.log(message.channel.name);
     let arr = ["ん？呼んだ？", "はーい♡", "...", "起きてるよ", "うるせぇな"];
     var random = Math.floor(Math.random() * arr.length);
-    var result = arr[random] + '\n\n【使い方】\n !cp 戦闘力を数字（カンマなし） ジョブ';
+    var result = arr[random];
+//    var result = arr[random] + '\n\n【使い方】\n !cp 1234567 パラ';
     sendReply(message, result);
     return;
   }
