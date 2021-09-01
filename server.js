@@ -62,6 +62,18 @@ client.on("message", message => {
     sendReply(message, result);
     return;
   }
+  if (message.content == '!cp help' || '!cp'){
+    let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
+    sendMsg(message.channel.id, text);
+    return;
+  }
+  if (message.content == '!cp reset'){
+    let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
+    sendMsg(message.channel.id, text);
+    return;
+  }
+
+  
   //  if (message.content.match(/にゃ～ん|にゃーん/)){
   //    let text = "にゃ～ん";
   //    sendMsg(message.channel.id, text);
