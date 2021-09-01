@@ -131,7 +131,8 @@ function writeCPConfig(channelId, messageId){
   const path = require('path');
 
 //  const jsonObject = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
-//  const result = {};
+//  console.log(jsonObject);
+  //  const result = {};
   let data = {
     channel: channelId,
     message: messageId
