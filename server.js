@@ -76,7 +76,7 @@ client.on("message", message => {
     process.env.DISCORD_BOT_CHID = message.channel.id;
     console.log("ch:" + message.channel.id);
     console.log("me:" + message.id);
-    sendMsg(message.channel.id, text);
+    sendMsgAndLog(message.channel.id, text);
     process.env.DISCORD_BOT_MEID = message.id;
     console.log("me:" + message.id);
     return;
@@ -116,10 +116,12 @@ function sendMsg(channelId, text, option = {}) {
     .then(console.log("メッセージ送信: " + text + JSON.stringify(option)))
     .catch(console.error);
 }
-function sendMsgAndLog(channelId, text, option = {}) {
-  let sent = await client.channels 
+async function sendMsgAndLog(channelId, text, option = {}) {
+  let sent = await client.channels
     .get(channelId)
     .send(text, option)
     .then(console.log("メッセージ送信: " + text + JSON.stringify(option)))
     .catch(console.error);
+  let id = sent.id;
+  console.log(id);
 }
