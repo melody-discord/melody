@@ -138,5 +138,5 @@ function writeCPConfig(channelId, messageId){
     message: messageId
   };
   console.log(data);
-  fs.writeFileSync('./config.json', JSON.stringify(data));
+  fs.writeFileSync('config.json', JSON.stringify(data),"utf8");
 }
