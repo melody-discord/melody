@@ -69,34 +69,33 @@ client.on("message", message => {
     const args = message.content.slice(prefix.length).trim().split(' ');
     const cmd = args.shift().toLowerCase();
 
-    console.log(cmd);
-    console.log(args[0]);
-    console.log(args[1]);
-    if (cmd ==='cp' && args[0] === 'help' || args[0] === undefine )
+    if (cmd ==='cp' && args[0] === 'help' || args[0] === undefined ){
+      console.log('HELP');
+      let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n"
+               + "【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
+      sendMsg(message.channel.id, text);
+      return;
+    }
+    if (cmd ==='cp' && args[0] === 'reset' ){
+      console.log('RESET');
+      let text = "戦闘力の報告をお願いします！\n" 
+               + "【入力方法】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ" 
+               + "\n-----------------------------------------";
+      process.env.DISCORD_BOT_CHID = message.channel.id;
+      console.log("ch:" + message.channel.id);
+      console.log("me:" + message.id);
+      sendMsgAndLog(message.channel.id, text);
+      process.env.DISCORD_BOT_MEID = message.id;
+      return;
+    }
+    
+    // メッセージ更新の実装
+    
     
     return;
   }
   
   
-  if (message.content.match('!cp help')){
-    console.log(message.content);
-    let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n"
-             + "【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
-    sendMsg(message.channel.id, text);
-    return;
-  }
-  if (message.content.match('!cp reset')){
-    let text = "戦闘力の報告をお願いします！\n" 
-             + "【入力方法】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ" 
-             + "\n-----------------------------------------";
-    process.env.DISCORD_BOT_CHID = message.channel.id;
-    console.log("ch:" + message.channel.id);
-    console.log("me:" + message.id);
-    sendMsgAndLog(message.channel.id, text);
-    process.env.DISCORD_BOT_MEID = message.id;
-    return;
-  }
-
   
   //  if (message.content.match(/にゃ～ん|にゃーん/)){
   //    let text = "にゃ～ん";
@@ -153,9 +152,6 @@ function writeCPConfig(channelId, messageId){
     console.log(data);
   });
   
-//  const jsonObject = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
-//  console.log(jsonObject);
-  //  const result = {};
   let data = {
     channel: channelId,
     message: messageId
