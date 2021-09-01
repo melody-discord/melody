@@ -78,7 +78,6 @@ client.on("message", message => {
     console.log("me:" + message.id);
     sendMsgAndLog(message.channel.id, text);
     process.env.DISCORD_BOT_MEID = message.id;
-    console.log("me:" + message.id);
     return;
   }
 
