@@ -128,14 +128,14 @@ async function sendMsgAndLog(channelId, text, option = {}) {
 
 function writeCPConfig(channelId, messageId){
   const fs = require('fs');
+  const path = require('path');
 
 //  const jsonObject = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 //  const result = {};
-  var masterData = [];
-  var data = {
+  let data = {
     channel: channelId,
     message: messageId
   };
-  masterData.push(data);
-  fs.writeFileSync('./config.json', masterData);
+  console.log(data);
+  fs.writeFileSync('./config.json', JSON.stringify(data));
 }

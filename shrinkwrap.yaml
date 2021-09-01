@@ -2,6 +2,8 @@ dependencies:
   discord-reply: 0.1.2
   discord.js: 11.6.4
   express: 4.17.1
+  fs: 0.0.2
+  path: 0.12.7
   querystring: 0.2.0
 packages:
   /@discordjs/collection/0.1.6:
@@ -256,6 +258,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
+  /fs/0.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-4fJE7zkzwbKmS9R5kTYGDQ9ZFPg=
   /http-errors/1.7.2:
     dependencies:
       depd: 1.1.2
@@ -395,6 +401,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=
+  /path/0.12.7:
+    dependencies:
+      process: 0.11.10
+      util: 0.10.4
+    dev: false
+    resolution:
+      integrity: sha1-1NwqUGxM4hl+tIHr/NWzbAFAsQ8=
   /prism-media/0.0.4:
     dev: false
     resolution:
@@ -408,6 +421,12 @@ packages:
       opusscript: ^0.0.8
     resolution:
       integrity: sha512-L6UsGHcT6i4wrQhFF1aPK+MNYgjRqR2tUoIqEY+CG1NqVkMjPRKzS37j9f8GiYPlD6wG9ruBj+q5Ax+bH8Ik1g==
+  /process/0.11.10:
+    dev: false
+    engines:
+      node: '>= 0.6.0'
+    resolution:
+      integrity: sha1-czIwDoQBYb2j5podHZGn1LwW8YI=
   /proxy-addr/2.0.5:
     dependencies:
       forwarded: 0.1.2
@@ -529,6 +548,12 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
+  /util/0.10.4:
+    dependencies:
+      inherits: 2.0.3
+    dev: false
+    resolution:
+      integrity: sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==
   /utils-merge/1.0.1:
     dev: false
     engines:
@@ -563,4 +588,6 @@ specifiers:
   discord-reply: ^0.1.0
   discord.js: ^11.6.4
   express: ^4.17.1
+  fs: ^0.0.2
+  path: ^0.12.7
   querystring: ^0.2.0
