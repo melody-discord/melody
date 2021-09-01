@@ -88,15 +88,16 @@ client.on("message", message => {
     }
     
     // メッセージ更新の実装
-    if (cmd ==='cp' && !args[0])){
+    if (cmd ==='cp' && args[0] !== undefined){
       const fs = require('fs');
       const path = require('path');
 
-      fs.readFile('./config.json','utf8',function(err, data){
-        if(err){
-          throw err;
-        }
-        console.log(data);
+      const jsonObject = JSON.parse(fs.readFileSync('./config.json','utf8'));
+      const result = {};
+
+      jsonObject.MyDog.forEach((obj) => {
+      result[obj.date] = obj;
+      console.log(obj.channel, obj.messsage );
       });
 //      new Discord().TextChannel.fetchMessage(message_id).then(message => message.edit("new message");
     //client.channels.cache.get(channelid).fetchMessage(messageid).then(message => message.edit("new message");
@@ -152,15 +153,7 @@ async function sendMsgAndLog(channelId, text, option = {}) {
 
 function writeCPConfig(channelId, messageId){
   const fs = require('fs');
-  const path = require('path');
-  
-  fs.readFile('./config.json','utf8',function(err, data){
-    if(err){
-      throw err;
-    }
-    console.log(data);
-  });
-  
+
   let data = {
     channel: channelId,
     message: messageId
