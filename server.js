@@ -38,6 +38,8 @@ client.on("ready", message => {
 });
 
 client.on("message", message => {
+  const prefix = "!";
+  
   if (message.author.id == client.user.id) {
     return;
   }
@@ -63,7 +65,12 @@ client.on("message", message => {
     return;
   }
 
+//  if (message.content.startsWith(prefix))
+
+  
+  
   if (message.content.match('!cp help')){
+    console.log(message.content);
     let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n"
              + "【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
     sendMsg(message.channel.id, text);
