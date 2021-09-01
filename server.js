@@ -129,7 +129,14 @@ async function sendMsgAndLog(channelId, text, option = {}) {
 function writeCPConfig(channelId, messageId){
   const fs = require('fs');
   const path = require('path');
-
+  
+  fs.readFile('./config.json','utf8',function(err, data){
+    if(err){
+      throw err;
+    }
+    console.log(data);
+  });
+  
 //  const jsonObject = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 //  console.log(jsonObject);
   //  const result = {};
@@ -137,6 +144,7 @@ function writeCPConfig(channelId, messageId){
     channel: channelId,
     message: messageId
   };
+  console.log('read:');
   console.log(data);
   fs.writeFileSync('config.json', JSON.stringify(data),"utf8");
 }
