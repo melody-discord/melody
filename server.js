@@ -69,7 +69,7 @@ client.on("message", message => {
     const args = message.content.slice(prefix.length).trim().split(' ');
     const cmd = args.shift().toLowerCase();
 
-    if (cmd ==='cp' && args[0] === 'help' || args[0] === undefined ){
+    if (cmd ==='cp' && (args[0] === 'help' || args[0] === undefined) ){
       console.log('HELP');
       let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n"
                + "【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
@@ -81,17 +81,16 @@ client.on("message", message => {
       let text = "戦闘力の報告をお願いします！\n" 
                + "【入力方法】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ" 
                + "\n-----------------------------------------";
-      process.env.DISCORD_BOT_CHID = message.channel.id;
       console.log("ch:" + message.channel.id);
       console.log("me:" + message.id);
       sendMsgAndLog(message.channel.id, text);
-      process.env.DISCORD_BOT_MEID = message.id;
       return;
     }
     
     // メッセージ更新の実装
-    
-    
+    if (cmd ==='cp' && args[0] === 'reset' ){
+//      new Discord().TextChannel.fetchMessage(message_id).then(message => message.edit("new message");
+    }
     return;
   }
   
