@@ -70,13 +70,16 @@ client.on("message", message => {
     return;
   }
   if (message.content.match('!cp reset')){
-  let text = "戦闘力の報告をお願いします！\n" 
-           + "【入力方法】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ" 
-           + "\n-----------------------------------------";
-  process.env.DISCORD_BOT_CHID = message.channel.id
-  sendMsg(message.channel.id, text);
-  process.env.DISCORD_BOT_CHID = message.id
-  return;
+    let text = "戦闘力の報告をお願いします！\n" 
+             + "【入力方法】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ" 
+             + "\n-----------------------------------------";
+    process.env.DISCORD_BOT_CHID = message.channel.id;
+    console.log("ch:" + message.channel.id);
+    console.log("me:" + message.id);
+    sendMsg(message.channel.id, text);
+    process.env.DISCORD_BOT_MEID = message.id;
+    console.log("me:" + message.id);
+    return;
   }
 
   
