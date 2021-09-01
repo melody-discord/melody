@@ -1,6 +1,7 @@
 const http = require("http");
 const querystring = require("querystring");
 const discord = require("discord.js");
+require("discord-reply");//必ずこの位置に追加
 const client = new discord.Client();
 
 http
