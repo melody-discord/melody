@@ -122,5 +122,20 @@ async function sendMsgAndLog(channelId, text, option = {}) {
     .then(console.log("メッセージ送信: " + text + JSON.stringify(option)))
     .catch(console.error);
   let id = sent.id;
+  writeCPConfig(channelId, id);
   console.log(id);
+}
+
+function writeCPConfig(channelId, messageId){
+  const fs = require('fs');
+
+  const jsonObject = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+  const result = {};
+  var masterData = [];
+  var data = {
+    channel: channelId,
+    message: messageId,
+  };
+  masterData.push(data)
+  fs.writeFileSync('./config.json', masterData);
 }
