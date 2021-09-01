@@ -62,18 +62,21 @@ client.on("message", message => {
     sendReply(message, result);
     return;
   }
-  if (message.content == '!cp help' || '!cp'){
+
+  if (message.content.match('!cp help')){
     let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n"
              + "【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
     sendMsg(message.channel.id, text);
     return;
   }
-  if (message.content == '!cp reset'){
-    let text = "戦闘力の報告をお願いします！\n" 
-             + "【入力方法】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ" 
-             + "\n－－－－－－－－－－－－－－－－－\n";
-    sendMsg(message.channel.id, text);
-    return;
+  if (message.content.match('!cp reset')){
+  let text = "戦闘力の報告をお願いします！\n" 
+           + "【入力方法】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ" 
+           + "\n-----------------------------------------";
+  process.env.DISCORD_BOT_CHID = message.channel.id
+  sendMsg(message.channel.id, text);
+  process.env.DISCORD_BOT_CHID = message.id
+  return;
   }
 
   
