@@ -65,8 +65,17 @@ client.on("message", message => {
     return;
   }
 
-//  if (message.content.startsWith(prefix))
+  if (message.content.startsWith(prefix)){
+    const args = message.content.slice(prefix.length).trim().split(' ');
+    const cmd = args.shift().toLowerCase();
 
+    console.log(cmd);
+    console.log(args[0]);
+    console.log(args[1]);
+    if (cmd ==='cp' && args[0] === 'help' || args[0] === undefine )
+    
+    return;
+  }
   
   
   if (message.content.match('!cp help')){
