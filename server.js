@@ -88,8 +88,18 @@ client.on("message", message => {
     }
     
     // メッセージ更新の実装
-    if (cmd ==='cp' && args[0] === 'reset' ){
+    if (cmd ==='cp' && !args[0])){
+      const fs = require('fs');
+      const path = require('path');
+
+      fs.readFile('./config.json','utf8',function(err, data){
+        if(err){
+          throw err;
+        }
+        console.log(data);
+      });
 //      new Discord().TextChannel.fetchMessage(message_id).then(message => message.edit("new message");
+    //client.channels.cache.get(channelid).fetchMessage(messageid).then(message => message.edit("new message");
     }
     return;
   }
