@@ -104,6 +104,7 @@ client.on("message", message => {
       //client.channels.cache.get(jsonObject.channel).fetchMessage(jsonObject.message).then(message => message.edit("new message"));
       //const msg = client.get_channel(jsonObject.channel).messages.fetch(jsonObject.message);
       //console.log(msg);
+      //console.log(client.channels.cache.get(jsonObject.channel).fetchMessage(jsonObject.message))
     }
     return;
   }
