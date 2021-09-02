@@ -109,35 +109,33 @@ client.on("message", message => {
       console.log('index:' + passIndex);
         
       //client.user.id
-    　var memdata = jsonMemData.members.filter(function(item){
-                                     return item.id == message.author.id;
-                                     });
-      //ヒットしない場合は作成
-      if (memdata.length == 0) {
+      if (passIndex === false){
         let new_data = {id: message.author.id,
-                        name: message.author.username,
+                        name: message.author.nickname,
                         cp: args[0],
                         job: args[1]
                        };
         jsonMemData.members.push(new_data);
         console.log('newdata: ' + JSON.stringify(new_data))
-        console.log('memdata: ' + JSON.stringify(jsonMemData))
-        fs.writeFileSync('cpdata.json', JSON.stringify(jsonMemData),"utf8");
+      } else {
+        jsonMemData.members[passIndex].name = message.member.nickname;
+        jsonMemData.members[passIndex].cp = args[0];
+        jsonMemData.members[passIndex].job = args[1];
       }
-
-      console.log('memdata:' + memdata + memdata.length);
+      console.log('memdata: ' + JSON.stringify(jsonMemData))
+      fs.writeFileSync('cpdata.json', JSON.stringify(jsonMemData),"utf8");
       
+
       console.log(jsonCpConfig.channel, jsonCpConfig.message, JSON.stringify(jsonCpConfig));
 
       client.channels.get(jsonCpConfig.channel).fetchMessage(jsonCpConfig.message).then(message => message.edit("new message"));
       //const msg = client.get_channel(jsonObject.channel).messages.fetch(jsonObject.message);
       //console.log(msg);
       //console.log(client.channels.cache.get(jsonObject.channel).fetchMessage(jsonObject.message))
-    }
     return;
   }
   
-  
+  }
   
 });
 
