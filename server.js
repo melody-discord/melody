@@ -98,12 +98,12 @@ client.on("message", message => {
       const jsonObject = JSON.parse(fs.readFileSync('./config.json','utf8'));
       const result = {};
 
-      jsonObject.MyDog.forEach((obj) => {
-      result[obj.date] = obj;
-      console.log(obj.channel, obj.messsage );
-      });
-//      new Discord().TextChannel.fetchMessage(message_id).then(message => message.edit("new message");
-    //client.channels.cache.get(channelid).fetchMessage(messageid).then(message => message.edit("new message");
+      //jsonObject.forEach((obj) => {
+      //result[obj.date] = obj;
+      console.log(jsonObject.channel, jsonObject.messsage );
+
+      //      new Discord().TextChannel.fetchMessage(message_id).then(message => message.edit("new message");
+      //client.channels.cache.get(channelid).fetchMessage(messageid).then(message => message.edit("new message");
     }
     return;
   }
