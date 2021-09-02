@@ -127,12 +127,12 @@ client.on("message", message => {
          + "\n-----------------------------------------";
       
       jsonMemData.members.forEach(function(index){
-                  if (index > 0){
-                      text += "\n'" + jsonMemData.members[index].name + "', " 
+                  if (index !== 0){
+                      text += '\n"' + jsonMemData.members[index].name + '", ' 
                                     + jsonMemData.members[index].cp;
-                      console.log(jsonMemData.members[index].name + "', " + jsonMemData.members[index].cp);
+                      console.log('text:' + text);
                   } 
-      });
+            });
 
       console.log(jsonCpConfig.channel, jsonCpConfig.message, JSON.stringify(jsonCpConfig));
       client.channels.get(jsonCpConfig.channel).fetchMessage(jsonCpConfig.message).then(message => message.edit(text));
