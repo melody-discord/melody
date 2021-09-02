@@ -126,10 +126,11 @@ client.on("message", message => {
          + "【入力方法】!cp 戦闘力 ジョブ\n （例）!cp 1234567 パラ" 
          + "\n-----------------------------------------";
       
-      jsonMemData.members.forEach(function(index){
+      jsonMemData.members.forEach(function(item,index){
                   if (index !== 0){
-                      text += '\n"' + jsonMemData.members[index].name + '", ' 
-                                    + jsonMemData.members[index].cp;
+                      text += '\n"' + item.name + '", ' 
+                                    + item.cp + ', "'
+                                    + item.job + '"'
                       console.log('text:' + text);
                   } 
             });
