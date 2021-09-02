@@ -1,1 +1,5 @@
-{"members":[]}
+{
+    "members": [
+        { "id":"John" , "name":"Doe", "cp":"1234567", "job":"para" }
+    ]
+}

@@ -97,18 +97,20 @@ client.on("message", message => {
     if (cmd ==='cp' && args[0] !== undefined){
       
       var fs = require('fs');
-      var jsonObject = JSON.parse(fs.readFileSync('./config.json','utf8'));
+      var jsonCpConfig = JSON.parse(fs.readFileSync('./config.json','utf8'));
+      var result = {};
+      var jsonMemData = JSON.parse(fs.readFileSync('./cpdata.json','utf8'));
       var result = {};
       
       //client.user.id
-    　var memdata = jsonObject.filter(function(item){
-                                     return item.members.id === client.user.id;
+    　var memdata = jsonMemData.members.filter(function(item){
+                                     return item.members.id == client.user.id;
                                      });
       console.log('memdata:' + memdata);
       
-      console.log(jsonObject.channel, jsonObject.message, JSON.stringify(jsonObject));
+      console.log(jsonCpConfig.channel, jsonCpConfig.message, JSON.stringify(jsonCpConfig));
 
-      client.channels.get(jsonObject.channel).fetchMessage(jsonObject.message).then(message => message.edit("new message"));
+      client.channels.get(jsonCpConfig.channel).fetchMessage(jsonCpConfig.message).then(message => message.edit("new message"));
       //const msg = client.get_channel(jsonObject.channel).messages.fetch(jsonObject.message);
       //console.log(msg);
       //console.log(client.channels.cache.get(jsonObject.channel).fetchMessage(jsonObject.message))
