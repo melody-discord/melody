@@ -66,7 +66,7 @@ client.on("message", message => {
   }
 
   //DEBUG MODE
-  if (message.channel.id == rocess.env.DISCORD_BOT_TEST_CH) return;
+  if (message.channel.id != process.env.DISCORD_BOT_TEST_CH) return;
   
   if (message.content.startsWith(prefix)){
     const args = message.content.slice(prefix.length).trim().split(' ');
