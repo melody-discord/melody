@@ -64,8 +64,9 @@ client.on("message", message => {
     sendReply(message, result);
     return;
   }
-
+  //=================================================================
   //DEBUG MODE
+  //=================================================================
   if (message.channel.id != process.env.DISCORD_BOT_TEST_CH) return;
   
   if (message.content.startsWith(prefix)){
