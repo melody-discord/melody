@@ -92,11 +92,10 @@ client.on("message", message => {
     
     // メッセージ更新の実装
     if (cmd ==='cp' && args[0] !== undefined){
-      const fs = require('fs');
-      const path = require('path');
+      var fs = require('fs');
 
-      const jsonObject = JSON.parse(fs.readFileSync('./config.json','utf8'));
-      const result = {};
+      var jsonObject = JSON.parse(fs.readFileSync('./config.json','utf8'));
+      var result = {};
 
       //jsonObject.forEach((obj) => {
       //result[obj.date] = obj;
