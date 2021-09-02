@@ -104,9 +104,18 @@ client.on("message", message => {
       
       //client.user.id
     　var memdata = jsonMemData.members.filter(function(item){
-                                     return item.members.id == client.user.id;
+                                     return item.id == client.user.id;
                                      });
-      console.log('memdata:' + memdata);
+      //ヒットしない場合は作成
+      if (memdata.length == 0) {
+        let new_data = {id: client.user.id,
+                        name: client.user.name,
+                        cp: args[0],
+                        job: args[1]
+                       };
+        console.log('newdata:' + new_data);
+      }
+      console.log('memdata:' + memdata );
       
       console.log(jsonCpConfig.channel, jsonCpConfig.message, JSON.stringify(jsonCpConfig));
 
