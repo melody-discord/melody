@@ -116,6 +116,9 @@ client.on("message", message => {
       } else {
         console.log('else: ' + passIndex);
         jsonMemData.members[passIndex].name = message.member.nickname;
+        if(message.member.nickname == null) {
+          jsonMemData.members[passIndex].name = message.author.username; //nicknameが設定されていない場合は名前
+        };
         jsonMemData.members[passIndex].cp = args[0];
         jsonMemData.members[passIndex].job = args[1];
       }
