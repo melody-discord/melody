@@ -110,16 +110,6 @@ client.on("message", message => {
   
   
   
-  //  if (message.content.match(/にゃ～ん|にゃーん/)){
-  //    let text = "にゃ～ん";
-  //    sendMsg(message.channel.id, text);
-  //    return;
-  //  }
-  //  if (message.content.match('やぁ')){
-  //    let text = "L「使用許可取った？」";
-  //    sendMsg(message.channel.id, text);
-  //    return;
-  //  }
 });
 
 if (process.env.DISCORD_BOT_TOKEN == undefined) {
