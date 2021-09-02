@@ -95,6 +95,8 @@ client.on("message", message => {
     
     // メッセージ更新の実装
     if (cmd ==='cp' && args[0] !== undefined){
+      
+      
       var fs = require('fs');
 
       var jsonObject = JSON.parse(fs.readFileSync('./config.json','utf8'));
