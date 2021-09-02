@@ -89,6 +89,7 @@ client.on("message", message => {
       console.log("ch:" + message.channel.id);
       console.log("me:" + message.id);
       sendMsgAndLog(message.channel.id, text);
+      clearAllCPData;
       return;
     }
     
@@ -157,4 +158,14 @@ function writeCPConfig(channelId, messageId){
   console.log('read:');
   console.log(data);
   fs.writeFileSync('config.json', JSON.stringify(data),"utf8");
+}
+
+function clearAllCPData(){
+  const fs = require('fs');
+
+  let data = {
+    "members": []
+    };
+  console.log('clearAllCPData:' + data);
+  fs.writeFileSync('cpdata.json', JSON.stringify(data),"utf8");
 }
