@@ -102,6 +102,12 @@ client.on("message", message => {
       var jsonMemData = JSON.parse(fs.readFileSync('./cpdata.json','utf8'));
       var result = {};
       
+      
+      let passIndex = jsonMemData.members.findIndex(function(item){
+                                     return item.id == message.author.id;
+                                     });
+      console.log('index:' + passIndex);
+        
       //client.user.id
     　var memdata = jsonMemData.members.filter(function(item){
                                      return item.id == message.author.id;
