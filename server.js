@@ -105,14 +105,14 @@ client.on("message", message => {
       console.log('index:' + passIndex);
         
       //client.user.id
-      if (passIndex === false){
+      if (passIndex === false) {
         let new_data = {id: message.author.id,
                         name: message.member.nickname,
                         cp: args[0],
                         job: args[1]
                        };
         jsonMemData.members.push(new_data);
-        console.log('newdata: ' + JSON.stringify(new_data))
+        console.log('newdata: ' + JSON.stringify(new_data));
       } else {
         jsonMemData.members[passIndex].name = message.member.nickname;
         jsonMemData.members[passIndex].cp = args[0];
@@ -125,16 +125,14 @@ client.on("message", message => {
          + "【入力方法】!cp 戦闘力 ジョブ\n （例）!cp 1234567 パラ" 
          + "\n-----------------------------------------";
       
-      let text2;
-      jsonMemData.members.foreach(function(index)){
-                                  if (index > 0){
-                                  text
-      } 
-                                  }
+      jsonMemData.members.foreach(function(index){
+                  if (index > 0){
+                      text = text + "'" + jsonMemData.members[index].name + "', " + jsonMemData.members[index].cp;
+                  } 
+      });
 
       console.log(jsonCpConfig.channel, jsonCpConfig.message, JSON.stringify(jsonCpConfig));
-
-      client.channels.get(jsonCpConfig.channel).fetchMessage(jsonCpConfig.message).then(message => message.edit("new message"));
+      client.channels.get(jsonCpConfig.channel).fetchMessage(jsonCpConfig.message).then(message => message.edit(text));
     return;
   }
   
