@@ -66,8 +66,8 @@ client.on("message", message => {
   }
   //=================================================================
   //DEBUG MODE
-  //=================================================================
   if (message.channel.id != process.env.DISCORD_BOT_TEST_CH) return;
+  //=================================================================
   
   if (message.content.startsWith(prefix)){
     const args = message.content.slice(prefix.length).trim().split(' ');
@@ -82,8 +82,9 @@ client.on("message", message => {
     }
     if (cmd ==='cp' && args[0] === 'reset' ){
       console.log('RESET');
-      let text = "戦闘力の報告をお願いします！\n" 
-               + "【入力方法】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ" 
+//      let text = ""<@everyone>" + 戦闘力の報告をお願いします！\n" 
+      let text = "@everyone" + "\n戦闘力の報告をお願いします！\n" 
+               + "【入力方法】!cp 戦闘力 ジョブ\n （例）!cp 1234567 パラ" 
                + "\n-----------------------------------------";
       console.log("ch:" + message.channel.id);
       console.log("me:" + message.id);
