@@ -64,10 +64,6 @@ client.on("message", message => {
     sendReply(message, result);
     return;
   }
-  //=================================================================
-  //DEBUG MODE
-  if (message.channel.id != process.env.DISCORD_BOT_TEST_CH) return;
-  //=================================================================
   
   if (message.content.startsWith(prefix)){
     const args = message.content.slice(prefix.length).trim().split(' ');
@@ -111,7 +107,7 @@ client.on("message", message => {
       //client.user.id
       if (passIndex === false){
         let new_data = {id: message.author.id,
-                        name: message.author.nickname,
+                        name: message.member.nickname,
                         cp: args[0],
                         job: args[1]
                        };
@@ -125,13 +121,20 @@ client.on("message", message => {
       console.log('memdata: ' + JSON.stringify(jsonMemData))
       fs.writeFileSync('cpdata.json', JSON.stringify(jsonMemData),"utf8");
       
+      let text = "@everyone" + "\n戦闘力の報告をお願いします！\n" 
+         + "【入力方法】!cp 戦闘力 ジョブ\n （例）!cp 1234567 パラ" 
+         + "\n-----------------------------------------";
+      
+      let text2;
+      jsonMemData.members.foreach(function(index)){
+                                  if (index > 0){
+                                  text
+      } 
+                                  }
 
       console.log(jsonCpConfig.channel, jsonCpConfig.message, JSON.stringify(jsonCpConfig));
 
       client.channels.get(jsonCpConfig.channel).fetchMessage(jsonCpConfig.message).then(message => message.edit("new message"));
-      //const msg = client.get_channel(jsonObject.channel).messages.fetch(jsonObject.message);
-      //console.log(msg);
-      //console.log(client.channels.cache.get(jsonObject.channel).fetchMessage(jsonObject.message))
     return;
   }
   
