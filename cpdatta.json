@@ -1,0 +1,7 @@
+{
+    "members": [
+        { "id":"John" , "name":"Doe", "cp":"1234567", "job":"para" },
+        { "id":"Anna" , "name":"Smith", "cp":"1234567", "job":"para" },
+        { "id":"Peter" , "name":"Jones", "cp":"1234567", "job":"para" }
+    ]
+}
