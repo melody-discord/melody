@@ -101,7 +101,7 @@ client.on("message", message => {
       //result[obj.date] = obj;
       console.log(jsonObject.channel, jsonObject.message, JSON.stringify(jsonObject));
 
-      //client.channels.cache.get(jsonObject.channel).fetchMessage(jsonObject.message).then(message => message.edit("new message"));
+      client.channels.get(jsonObject.channel).fetchMessage(jsonObject.message).then(message => message.edit("new message"));
       //const msg = client.get_channel(jsonObject.channel).messages.fetch(jsonObject.message);
       //console.log(msg);
       //console.log(client.channels.cache.get(jsonObject.channel).fetchMessage(jsonObject.message))
