@@ -96,16 +96,16 @@ client.on("message", message => {
     // メッセージ更新の実装
     if (cmd ==='cp' && args[0] !== undefined){
       
-      if isNaN(args[0]) !== true {
-        
-      }
       var fs = require('fs');
-
       var jsonObject = JSON.parse(fs.readFileSync('./config.json','utf8'));
       var result = {};
-
-      //jsonObject.forEach((obj) => {
-      //result[obj.date] = obj;
+      
+      //client.user.id
+    　var memdata = jsonObject.filter(function(item){
+                                     return item.members.id === client.user.id;
+                                     });
+      console.log('memdata:' + memdata);
+      
       console.log(jsonObject.channel, jsonObject.message, JSON.stringify(jsonObject));
 
       client.channels.get(jsonObject.channel).fetchMessage(jsonObject.message).then(message => message.edit("new message"));
