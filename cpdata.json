@@ -1,5 +1,1 @@
-{
-    "members": [
-        { "id":"John" , "name":"Doe", "cp":"1234567", "job":"para" }
-    ]
-}
+{"members":[{"id":"000000000000000000","name":"No Name","cp":1234567,"job":"para"}]}

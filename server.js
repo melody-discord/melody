@@ -113,9 +113,10 @@ client.on("message", message => {
                         cp: args[0],
                         job: args[1]
                        };
-        console.log('newdata:' + new_data);
+        jsonMemData.members.push(new_data);
+        console.log('newdata: ' + new_data.name)
       }
-      console.log('memdata:' + memdata );
+      console.log('memdata:' + memdata + memdata.length);
       
       console.log(jsonCpConfig.channel, jsonCpConfig.message, JSON.stringify(jsonCpConfig));
 
@@ -177,7 +178,11 @@ function clearAllCPData(){
   const fs = require('fs');
 
   let data = {
-    "members": []
+    "members": [{id: "000000000000000000",
+                        name: "No Name",
+                        cp: 1234567,
+                        job: "para"
+                       }]
     };
   console.log('clearAllCPData:' + data);
   fs.writeFileSync('cpdata.json', JSON.stringify(data),"utf8");
