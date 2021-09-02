@@ -99,10 +99,10 @@ client.on("message", message => {
 
       //jsonObject.forEach((obj) => {
       //result[obj.date] = obj;
-      console.log(jsonObject.channel, jsonObject.messsage );
+      console.log(jsonObject.channel, jsonObject.message, JSON.stringify(jsonObject));
 
       //      new Discord().TextChannel.fetchMessage(message_id).then(message => message.edit("new message");
-      //client.channels.cache.get(channelid).fetchMessage(messageid).then(message => message.edit("new message");
+      client.channels.cache.get(jsonObject.channel).fetchMessage(jsonObject.message).then(message => message.edit("new message"));
     }
     return;
   }
