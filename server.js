@@ -104,18 +104,21 @@ client.on("message", message => {
       
       //client.user.id
     　var memdata = jsonMemData.members.filter(function(item){
-                                     return item.id == client.user.id;
+                                     return item.id == message.author.id;
                                      });
       //ヒットしない場合は作成
       if (memdata.length == 0) {
-        let new_data = {id: client.user.id,
-                        name: client.user.name,
+        let new_data = {id: message.author.id,
+                        name: message.author.username,
                         cp: args[0],
                         job: args[1]
                        };
         jsonMemData.members.push(new_data);
-        console.log('newdata: ' + new_data.name)
+        console.log('newdata: ' + JSON.stringify(new_data))
+        console.log('memdata: ' + JSON.stringify(jsonMemData))
+        fs.writeFileSync('cpdata.json', JSON.stringify(jsonMemData),"utf8");
       }
+
       console.log('memdata:' + memdata + memdata.length);
       
       console.log(jsonCpConfig.channel, jsonCpConfig.message, JSON.stringify(jsonCpConfig));
