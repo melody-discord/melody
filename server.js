@@ -89,7 +89,7 @@ client.on("message", message => {
       console.log("ch:" + message.channel.id);
       console.log("me:" + message.id);
       sendMsgAndLog(message.channel.id, text);
-      clearAllCPData;
+      clearAllCPData();
       return;
     }
     
@@ -134,18 +134,17 @@ function sendMsg(channelId, text, option = {}) {
   client.channels
     .get(channelId)
     .send(text, option)
-    .then(console.log("CH:" + channelId + " メッセージ送信: " + text + JSON.stringify(option)))
+    .then(console.log("sendMsg  CH:" + channelId + " メッセージ送信: " + text + JSON.stringify(option)))
     .catch(console.error);
 }
 async function sendMsgAndLog(channelId, text, option = {}) {
   let sent = await client.channels
     .get(channelId)
     .send(text, option)
-    .then(console.log("CH:" + channelId + " メッセージ送信: " + text + JSON.stringify(option)))
+    .then(console.log("sendMsgAndLog  CH:" + channelId + " メッセージ送信: " + text + JSON.stringify(option)))
     .catch(console.error);
   let id = sent.id;
   writeCPConfig(channelId, id);
-  console.log(id);
 }
 
 function writeCPConfig(channelId, messageId){
@@ -155,8 +154,7 @@ function writeCPConfig(channelId, messageId){
     channel: channelId,
     message: messageId
   };
-  console.log('read:');
-  console.log(data);
+  console.log('writeCPConfig:' + data);
   fs.writeFileSync('config.json', JSON.stringify(data),"utf8");
 }
 
@@ -168,4 +166,8 @@ function clearAllCPData(){
     };
   console.log('clearAllCPData:' + data);
   fs.writeFileSync('cpdata.json', JSON.stringify(data),"utf8");
+}
+
+function getJsonCpData(){
+  
 }
