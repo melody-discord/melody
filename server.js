@@ -62,23 +62,26 @@ client.on("message", message => {
     console.log(message.channel.name);
     let arr = ["ん？呼んだ？", "はーい♡", "...", "起きてるよ", "うるせぇな"];
     var random = Math.floor(Math.random() * arr.length);
-    var result = arr[random];
-//    var result = arr[random] + '\n\n【戦闘力報告関連】\n !cp 1234567 パラ';
+//    var result = arr[random];
+    var result = arr[random] + '\n\n【戦闘力報告関連】\n !cp';
     sendReply(message, result);
     return;
   }
   
+  //コマンド関連
   if (message.content.startsWith(prefix)){
     const args = message.content.slice(prefix.length).trim().split(' ');
     const cmd = args.shift().toLowerCase();
-
+    //Usage
     if (cmd ==='cp' && (args[0] === 'help' || args[0] === undefined) ){
       console.log('HELP');
       let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n"
-               + "【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ";
+               + "【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ\n\n"
+               + "　※!cp と区切りのスペースは半角でお願いします。";
       sendMsg(message.channel.id, text);
       return;
     }
+    // reset データを初期化して報告用のメッセージ送信
     if (cmd ==='cp' && args[0] === 'reset' ){
       console.log('RESET');
       let text = "@everyone" + "\n戦闘力の報告をお願いします！\n" 
@@ -91,28 +94,28 @@ client.on("message", message => {
       return;
     }
     
-    // メッセージ更新の実装
+    // 報告時の処理
     if (cmd ==='cp' && args[0] !== undefined){
-      
+      //設定・データの読み込み
       var fs = require('fs');
       var jsonCpConfig = JSON.parse(fs.readFileSync('./config.json','utf8'));
       var result = {};
       var jsonMemData = JSON.parse(fs.readFileSync('./cpdata.json','utf8'));
       var result = {};
+      //投稿者のニックネーム（設定なしは名前）
+      let nname = message.member.nickname;
+      if(nname == null) {
+        nname = message.author.username; //nicknameが設定されていない場合は名前
+      };
+
+
       
-      
+      //投稿者が既に報告済みか判定      
       let passIndex = jsonMemData.members.findIndex(function(item){
                                      return item.id == message.author.id;
                                      });
       console.log('index:' + passIndex);
       
-      let nname;
-      if(message.member.nickname == null) {
-        nname = message.author.username; //nicknameが設定されていない場合は名前
-      } else {
-        nname = message.member.nickname;
-      };
-
       //該当IDがなければ追加、あれば更新
       if (passIndex === -1) {
         let new_data = {id: message.author.id,
