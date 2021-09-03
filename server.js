@@ -105,17 +105,14 @@ client.on("message", message => {
       //投稿者のニックネーム（設定なしは名前）
       let nname = message.member.nickname;
       if(nname == null) {
-        nname = message.author.username; //nicknameが設定されていない場合は名前
+        nname = message.author.username;
       };
 
-
-      
       //投稿者が既に報告済みか判定      
       let passIndex = jsonMemData.members.findIndex(function(item){
                                      return item.id == message.author.id;
                                      });
       console.log('index:' + passIndex);
-      
       //該当IDがなければ追加、あれば更新
       if (passIndex === -1) {
         let new_data = {id: message.author.id,
@@ -134,7 +131,9 @@ client.on("message", message => {
       console.log('memdata: ' + JSON.stringify(jsonMemData))
       fs.writeFileSync('cpdata.json', JSON.stringify(jsonMemData),"utf8");
       
-      let text = "@everyone" + "\n戦闘力の報告をお願いします！\n" 
+//      let text = "@everyone" + "\n戦闘力の報告をお願いします！\n" 
+      //報告による投稿はメンションを付けない
+      let text = "\n戦闘力の報告をお願いします！\n" 
          + "【入力方法】!cp 戦闘力 ジョブ\n （例）!cp 1234567 パラ" 
          + "\n-----------------------------------------";
       
@@ -148,8 +147,12 @@ client.on("message", message => {
             });
 
       console.log(jsonCpConfig.channel, jsonCpConfig.message, JSON.stringify(jsonCpConfig));
-      client.channels.get(jsonCpConfig.channel).fetchMessage(jsonCpConfig.message).then(message => message.edit(text));
-    return;
+      //元の投稿を編集するパターン
+      //client.channels.get(jsonCpConfig.channel).fetchMessage(jsonCpConfig.message).then(message => message.edit(text));
+      //報告結果を新規投稿する
+      sendMsgAndLog(message.channel.id, text);
+      //旧データを削除する
+      return;
   }
   
   }
