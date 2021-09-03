@@ -72,7 +72,6 @@ client.on("message", message => {
   if (message.channel.id != process.env.DISCORD_BOT_TEST_CH) return;
   //===================================
     
-  
   //コマンド関連
   if (message.content.startsWith(prefix)){
     const args = message.content.slice(prefix.length).trim().split(' ');
@@ -144,9 +143,7 @@ client.on("message", message => {
       
       jsonMemData.members.forEach(function(item,index){
                   if (index !== 0){
-                      text += '\n"' + item.name + '", ' 
-                                    + item.cp + ', "'
-                                    + item.job + '"'
+                      text += '\n"' + item.name + '", ' + item.cp + ', "' + item.job + '"'
                       console.log('text:' + text);
                   } 
             });
