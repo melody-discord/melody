@@ -67,6 +67,11 @@ client.on("message", message => {
     sendReply(message, result);
     return;
   }
+  //===================================
+  //debug用チャンネル以外は処理しない
+  if (message.channel.id != process.env.DISCORD_BOT_TEST_CH) return;
+  //===================================
+    
   
   //コマンド関連
   if (message.content.startsWith(prefix)){
