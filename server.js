@@ -149,9 +149,12 @@ client.on("message", message => {
       console.log(jsonCpConfig.channel, jsonCpConfig.message, JSON.stringify(jsonCpConfig));
       //元の投稿を編集するパターン
       //client.channels.get(jsonCpConfig.channel).fetchMessage(jsonCpConfig.message).then(message => message.edit(text));
+      let oldchannel = jsonCpConfig.channel;
+      let oldmessage = jsonCpConfig.message;
       //報告結果を新規投稿する
       sendMsgAndLog(message.channel.id, text);
       //旧データを削除する
+      //client.channels.get(oldchannel).fetchMessage(oldmessage).then(message => message.delete());
       return;
   }
   
@@ -203,7 +206,7 @@ function writeCPConfig(channelId, messageId){
 
 function clearAllCPData(){
   const fs = require('fs');
-
+  //全データ削除のため[0]はダミーデータとする
   let data = {
     "members": [{id: "000000000000000000",
                         name: "No Name",
