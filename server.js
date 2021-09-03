@@ -43,6 +43,7 @@ client.on("message", message => {
   if (message.author.id == client.user.id) {
     return;
   }
+  // gvg出欠確認にリアクションを付ける
   // author.idはwebhookの最初の数字18桁
   if (message.author.id == process.env.DISCORD_BOT_ID01 ||
       message.author.id == process.env.DISCORD_BOT_ID02) {
@@ -55,12 +56,14 @@ client.on("message", message => {
     message.react("😭");
     return;
   }
+  
+  // メンションで呼ばれた時は使用方法を表示
   if (message.isMemberMentioned(client.user)) {
     console.log(message.channel.name);
     let arr = ["ん？呼んだ？", "はーい♡", "...", "起きてるよ", "うるせぇな"];
     var random = Math.floor(Math.random() * arr.length);
     var result = arr[random];
-//    var result = arr[random] + '\n\n【使い方】\n !cp 1234567 パラ';
+//    var result = arr[random] + '\n\n【戦闘力報告関連】\n !cp 1234567 パラ';
     sendReply(message, result);
     return;
   }
@@ -78,7 +81,6 @@ client.on("message", message => {
     }
     if (cmd ==='cp' && args[0] === 'reset' ){
       console.log('RESET');
-//      let text = ""<@everyone>" + 戦闘力の報告をお願いします！\n" 
       let text = "@everyone" + "\n戦闘力の報告をお願いします！\n" 
                + "【入力方法】!cp 戦闘力 ジョブ\n （例）!cp 1234567 パラ" 
                + "\n-----------------------------------------";
@@ -103,11 +105,18 @@ client.on("message", message => {
                                      return item.id == message.author.id;
                                      });
       console.log('index:' + passIndex);
-        
-      //client.user.id
+      
+      let nname;
+      if(message.member.nickname == null) {
+        nname = message.author.username; //nicknameが設定されていない場合は名前
+      } else {
+        nname = message.member.nickname;
+      };
+
+      //該当IDがなければ追加、あれば更新
       if (passIndex === -1) {
         let new_data = {id: message.author.id,
-                        name: message.member.nickname,
+                        name: nname,
                         cp: args[0],
                         job: args[1]
                        };
@@ -115,10 +124,7 @@ client.on("message", message => {
         console.log('newdata: ' + JSON.stringify(new_data));
       } else {
         console.log('else: ' + passIndex);
-        jsonMemData.members[passIndex].name = message.member.nickname;
-        if(message.member.nickname == null) {
-          jsonMemData.members[passIndex].name = message.author.username; //nicknameが設定されていない場合は名前
-        };
+        jsonMemData.members[passIndex].name = nname;
         jsonMemData.members[passIndex].cp = args[0];
         jsonMemData.members[passIndex].job = args[1];
       }
