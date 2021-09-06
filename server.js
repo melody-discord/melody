@@ -148,12 +148,12 @@ client.on("message", message => {
          + "\n-----------------------------------------";
       
       jsonMemData.members.forEach(function(item,index){
-//                  if (index !== 0){
-//                      text += '\n"' + item.name + '", ' + item.cp + ', "' + item.job + '"'
-//                      console.log('text:' + text);
                   if (index !== 0){
-                      text += '\n"' + item.name + '\t ' + item.cp + '\t "' + item.job + '"'
+                      text += '\n"' + item.name + '", ' + item.cp + ', "' + item.job + '"'
                       console.log('text:' + text);
+//                  if (index !== 0){
+//                      text += '\n"' + item.name + '\t ' + item.cp + '\t "' + item.job + '"'
+//                      console.log('text:' + text);
                   } 
             });
 
