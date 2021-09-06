@@ -79,9 +79,15 @@ client.on("message", message => {
     //Usage
     if (cmd ==='cp' && (args[0] === 'help' || args[0] === undefined) ){
       console.log('HELP');
-      let text = "【設定】!cp reset：現在のチャンネルに報告用のメッセージを作成します\n"
-               + "【報告】!cp 戦闘力 ジョブ （例）!cp 1234567 パラ\n\n"
-               + "　※!cp と区切りのスペースは半角でお願いします。";
+      let text = "\n【報告用】!cp 戦闘力 ジョブ\n"
+      + "　　　  　`!cp 1234567 パラ`　という感じで入力してください。\n\n"
+      + "　※!cpと区切りのスペースは半角でお願いします。\n"
+      + "　　数字はカンマで区切らないでください。\n\n"
+      + "　※何度でも入力可能です。間違えたら再度入力してください。\n"
+      + "　　後から入力したもので上書きします。\n\n\n"
+      + "【設定用】`!cp reset`：現在のチャンネルに報告用のメッセージを作成します。\n\n"
+      + "　※集計する人が行いますので通常は使いません。\n"
+      + "　※このコマンドが入力されるとメンションが行きますので早めに報告しましょう。\n";
       sendMsg(message.channel.id, text);
       return;
     }
@@ -89,7 +95,7 @@ client.on("message", message => {
     if (cmd ==='cp' && args[0] === 'reset' ){
       console.log('RESET');
       let text = "@everyone" + "\n戦闘力の報告をお願いします！\n" 
-               + "【入力方法】!cp 戦闘力 ジョブ\n （例）!cp 1234567 パラ" 
+               + "【入力方法】!cp 戦闘力 ジョブ\n （例）`!cp 1234567 パラ`" 
                + "\n-----------------------------------------";
       console.log("ch:" + message.channel.id);
       console.log("me:" + message.id);
