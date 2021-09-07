@@ -69,7 +69,7 @@ client.on("message", message => {
   }
   //===================================
   //debug用チャンネル以外は処理しない
-  if (message.channel.id != process.env.DISCORD_BOT_TEST_CH) return;
+  //if (message.channel.id != process.env.DISCORD_BOT_TEST_CH) return;
   //===================================
     
   //コマンド関連
@@ -141,7 +141,6 @@ client.on("message", message => {
       console.log('memdata: ' + JSON.stringify(jsonMemData))
       fs.writeFileSync('cpdata.json', JSON.stringify(jsonMemData),"utf8");
       
-//      let text = "@everyone" + "\n戦闘力の報告をお願いします！\n" 
       //報告による投稿はメンションを付けない
       let text = "\n戦闘力の報告をお願いします！\n" 
          + "【入力方法】!cp 戦闘力 ジョブ\n （例）!cp 1234567 パラ" 
@@ -161,6 +160,10 @@ client.on("message", message => {
       let oldmessage = jsonCpConfig.message;
       //報告結果を新規投稿する
       sendMsgAndLog(message.channel.id, text);
+      
+      
+      //※↓様子をみて実装する
+      
       //旧データを削除する
       //client.channels.get(oldchannel).fetchMessage(oldmessage).then(message => message.delete());
       return;
