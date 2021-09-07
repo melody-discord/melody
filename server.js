@@ -69,7 +69,7 @@ client.on("message", message => {
   }
   //===================================
   //debug用チャンネル以外は処理しない
-  //if (message.channel.id != process.env.DISCORD_BOT_TEST_CH) return;
+  if (message.channel.id != process.env.DISCORD_BOT_TEST_CH) return;
   //===================================
     
   //コマンド関連
